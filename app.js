@@ -1,4 +1,4 @@
-import { router } from "./router.js";
+import { router } from "./src/router.js";
 
 // Run the router on initial load to manage application routes
 document.addEventListener("DOMContentLoaded", () => {
