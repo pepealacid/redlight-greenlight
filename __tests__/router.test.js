@@ -1,10 +1,10 @@
-import { router } from "../src/router";
-import * as home from "../src/pages/home";
-import * as game from "../src/pages/game";
+import { router } from "../public/src/router";
+import * as home from "../public/src/pages/home";
+import * as game from "../public/src/pages/game";
 
 // Mock the page rendering functions to track their calls
-jest.mock("../src/pages/home");
-jest.mock("../src/pages/game");
+jest.mock("../public/src/pages/home");
+jest.mock("../public/src/pages/game");
 
 describe("Router", () => {
   // Test that the router renders the Home view on the root path ('/')

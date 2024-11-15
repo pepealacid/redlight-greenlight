@@ -1,0 +1,52 @@
+/* Estilos generales para toda la pantalla */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  padding-top: 0; /* Valor por defecto sin padding */
+}
+
+#app.home-view {
+  padding-top: 30px; /* Padding superior solo para la vista home */
+}
+
+#app.game-view {
+  padding-top: 0; /* Asegura que no haya padding en game */
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* Estilos específicos para pantallas grandes (escritorio) */
+@media (min-width: 768px) {
+  #app {
+    width: 400px; /* Anchura similar a un móvil */
+    height: 700px; /* Altura estándar de una pantalla móvil */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+}
+
+/* Para pantallas pequeñas (móviles), el contenedor ocupará toda la pantalla */
+@media (max-width: 767px) {
+  #app {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,9 +1,9 @@
-import { renderGame } from "../src/pages/game";
-import StorageService from "../src/services/storage";
+import { renderGame } from "../public/src/pages/game";
+import StorageService from "../public/src/services/storage";
 import { fireEvent } from "@testing-library/dom";
 
 // Mock StorageService to isolate storage from affecting real data
-jest.mock("../src/services/storage");
+jest.mock("../public/src/services/storage");
 
 // Mock HTMLAudioElement methods globally
 beforeAll(() => {

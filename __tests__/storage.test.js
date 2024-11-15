@@ -1,4 +1,4 @@
-import StorageService from "../src/services/storage";
+import StorageService from "../public/src/services/storage";
 
 describe("StorageService", () => {
   // Clear storage before each test to prevent data interference

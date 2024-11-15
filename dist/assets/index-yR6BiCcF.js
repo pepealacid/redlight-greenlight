@@ -74,11 +74,11 @@
         <div class="buttons-container">
           <button class="button mute-button" id="muteButton">🔊</button>
           <button class="button save-button">
-            <img src="../../assets/img/exit.svg" alt="exit button" />
+            <img src="./assets/img/exit.svg" alt="exit button" />
           </button>
         </div>
       </div>
-    `,this.shadowRoot.querySelector(".mute-button").addEventListener("click",()=>{this.toggleMute()}),this.shadowRoot.querySelector(".save-button").addEventListener("click",()=>{this.saveScore(e,n),this.exitGame()})}saveScore(e,n){u.savePlayerScore(e,n),window.history.pushState({},"","/home"),g()}toggleMute(){const e=this.shadowRoot.querySelector("#muteButton"),n=e.classList.toggle("muted");e.textContent=n?"🔇":"🔊",this.dispatchEvent(new CustomEvent("toggleMute",{detail:{isMuted:n},bubbles:!0,composed:!0}))}exitGame(){this.dispatchEvent(new CustomEvent("exitGame",{bubbles:!0,composed:!0}))}}customElements.define("nav-bar",G);class T extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}static get observedAttributes(){return["isgreen"]}connectedCallback(){this.render()}render(){const e=this.getAttribute("isgreen")==="true",n=e?"../../assets/img/boy-back.png":"../../assets/img/boy-front.png",t=e?"Go!":"Stop!";this.shadowRoot.innerHTML=`
+    `,this.shadowRoot.querySelector(".mute-button").addEventListener("click",()=>{this.toggleMute()}),this.shadowRoot.querySelector(".save-button").addEventListener("click",()=>{this.saveScore(e,n),this.exitGame()})}saveScore(e,n){u.savePlayerScore(e,n),window.history.pushState({},"","/home"),g()}toggleMute(){const e=this.shadowRoot.querySelector("#muteButton"),n=e.classList.toggle("muted");e.textContent=n?"🔇":"🔊",this.dispatchEvent(new CustomEvent("toggleMute",{detail:{isMuted:n},bubbles:!0,composed:!0}))}exitGame(){this.dispatchEvent(new CustomEvent("exitGame",{bubbles:!0,composed:!0}))}}customElements.define("nav-bar",G);class T extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}static get observedAttributes(){return["isgreen"]}connectedCallback(){this.render()}render(){const e=this.getAttribute("isgreen")==="true",n=e?"./assets/img/boy-back.png":"./assets/img/boy-front.png",t=e?"Go!":"Stop!";this.shadowRoot.innerHTML=`
       <style>
         .person {
           display: flex;
