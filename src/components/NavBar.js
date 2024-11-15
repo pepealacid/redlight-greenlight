@@ -77,7 +77,7 @@ class NavBar extends HTMLElement {
         <div class="buttons-container">
           <button class="button mute-button" id="muteButton">🔊</button>
           <button class="button save-button">
-            <img src="/assets/img/exit.svg" alt="exit button" />
+            <img src="./assets/img/exit.svg" alt="exit button" />
           </button>
         </div>
       </div>
