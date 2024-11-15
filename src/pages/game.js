@@ -6,6 +6,10 @@ import "../components/PersonIcon";
 export function renderGame() {
   const app = document.getElementById("app");
 
+  // Set initial flags for game state
+  renderGame.isGreen = false;
+  renderGame.isMuted = false;
+
   // Set initial view styling
   app.classList.add("game-view");
   app.classList.remove("home-view");
@@ -17,10 +21,8 @@ export function renderGame() {
     maxScore: 0,
   };
   let counter = Number(playerData.score);
-  let isGreen = true;
   let lastButton = null;
   let currentTimeout;
-  let isMuted = false;
   const greenLightAudio = new Audio("../../assets/audio/song.mp3");
   greenLightAudio.loop = true;
 
@@ -58,6 +60,7 @@ export function renderGame() {
 
   // Clean up audio, timers, and events when exiting the game view
   function cleanup() {
+    StorageService.savePlayerScore(playerName, counter);
     greenLightAudio.pause();
     greenLightAudio.currentTime = 0;
     clearTimeout(currentTimeout);
@@ -68,7 +71,7 @@ export function renderGame() {
   // Toggle between red and green light states
   function toggleTrafficLight() {
     clearTimeout(currentTimeout);
-    if (isGreen) {
+    if (renderGame.isGreen) {
       switchToRedLight();
     } else {
       switchToGreenLight();
@@ -78,15 +81,15 @@ export function renderGame() {
   // Switch to red light state
   function switchToRedLight() {
     greenLightAudio.pause();
-    isGreen = false;
+    renderGame.isGreen = false;
     updatePersonIcon(false); // Face front
     currentTimeout = setTimeout(toggleTrafficLight, 3000);
   }
 
   // Switch to green light state
   function switchToGreenLight() {
-    if (!isMuted) greenLightAudio.play();
-    isGreen = true;
+    if (!renderGame.isMuted) greenLightAudio.play();
+    renderGame.isGreen = true;
     updatePersonIcon(true); // Face back
     const greenDuration = calculateGreenLightDuration(counter);
     currentTimeout = setTimeout(toggleTrafficLight, greenDuration);
@@ -145,7 +148,7 @@ export function renderGame() {
 
   // Handle left/right button clicks and adjust score accordingly
   function handleButtonClick(button) {
-    if (!isGreen) {
+    if (!renderGame.isGreen) {
       resetCounter();
     } else {
       if (lastButton !== button) {
@@ -169,10 +172,10 @@ export function renderGame() {
       .addEventListener("click", () => handleButtonClick("right"));
 
     navBar.addEventListener("toggleMute", (event) => {
-      isMuted = event.detail.isMuted;
-      if (isMuted) {
+      renderGame.isMuted = event.detail.isMuted;
+      if (renderGame.isMuted) {
         greenLightAudio.pause();
-      } else if (isGreen) {
+      } else if (renderGame.isGreen) {
         greenLightAudio.play();
       }
     });
