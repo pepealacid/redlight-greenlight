@@ -18,8 +18,8 @@ class PersonIcon extends HTMLElement {
   render() {
     const isGreen = this.getAttribute("isgreen") === "true";
     const imgSrc = isGreen
-      ? "./assets/img/boy-back.png" // Display back view if green
-      : "./assets/img/boy-front.png"; // Display front view if not green
+      ? "/assets/img/boy-back.png" // Display back view if green
+      : "/assets/img/boy-front.png"; // Display front view if not green
     const altText = isGreen ? "Go!" : "Stop!";
 
     this.shadowRoot.innerHTML = `
